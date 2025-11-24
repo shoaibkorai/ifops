@@ -27,7 +27,7 @@ cd ifops
 ./install.sh
 ```
 
-The script will:
+The Script will:
 - Check Python version (3.9+ required)
 - Create a virtual environment
 - Install all dependencies
