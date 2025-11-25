@@ -68,13 +68,39 @@ def load_credentials(profile: str = "default") -> dict:
     return {}
 
 
+def validate_region(region: str) -> bool:
+    """Validate AWS region format."""
+    import re
+    # AWS region format: us-east-1, eu-west-3, ap-southeast-2, etc.
+    pattern = r'^[a-z]{2}-[a-z]+-\d{1}$'
+    return bool(re.match(pattern, region))
+
+
 def save_credentials(profile: str, access_key: str, secret_key: str, region: str) -> None:
     """Save credentials for a profile."""
+    from rich.console import Console
+    console = Console()
+
     get_config_dir()
 
+    # Validate region format
+    if not validate_region(region):
+        console.print(f"[red]✗ Invalid region format: '{region}'[/red]")
+        console.print("[yellow]AWS regions follow the format: us-east-1, eu-west-3, ap-south-1, etc.[/yellow]")
+        console.print("[yellow]Common regions: us-east-1, us-west-2, eu-west-1, eu-west-3, ap-southeast-1[/yellow]")
+        import typer
+        raise typer.Exit(1)
+
+    # Validate access key format (should start with AKIA for IAM users)
+    if not access_key.startswith(('AKIA', 'ASIA', 'AIDA')):
+        console.print(f"[yellow]⚠ Warning: Access key doesn't match typical AWS format[/yellow]")
+        console.print(f"[yellow]  AWS access keys usually start with: AKIA, ASIA, or AIDA[/yellow]")
+
     config = configparser.ConfigParser()
+    profile_exists = False
     if CREDENTIALS_FILE.exists():
         config.read(CREDENTIALS_FILE)
+        profile_exists = profile in config
 
     config[profile] = {
         "aws_access_key_id": access_key,
@@ -87,6 +113,10 @@ def save_credentials(profile: str, access_key: str, secret_key: str, region: str
 
     # Set secure permissions
     os.chmod(CREDENTIALS_FILE, 0o600)
+
+    # Show override message if profile already existed
+    if profile_exists:
+        console.print(f"\n[yellow]⚠ Profile '{profile}' already existed and has been overridden[/yellow]")
 
 
 def list_profiles() -> list:
@@ -123,15 +153,36 @@ def handle_profile_param(profile: Optional[str]) -> None:
     """
     Handle profile parameter in commands.
     This allows --profile to work both globally and per-command.
+    If no profile is specified, attempts to use 'default' profile.
     """
-    if profile:
-        creds = load_credentials(profile)
-        if creds:
-            apply_profile(profile)
+    # If no profile specified, try to use 'default' profile
+    if not profile:
+        if 'default' in list_profiles():
+            profile = 'default'
         else:
+            # No profile specified and no default profile exists
+            # Let boto3 use environment variables or AWS config
+            return
+
+    creds = load_credentials(profile)
+    if creds:
+        # Validate region before applying
+        region = creds.get('region', '')
+        if region and not validate_region(region):
             from rich.console import Console
             console = Console()
-            console.print(f"[red]Profile '{profile}' not found in {CREDENTIALS_FILE}[/red]")
-            console.print(f"Available profiles: {', '.join(list_profiles()) or 'none'}")
+            console.print(f"[red]✗ Profile '{profile}' has invalid region: '{region}'[/red]")
+            console.print(f"[yellow]Please update the profile with a valid AWS region[/yellow]")
+            console.print(f"[yellow]Edit: {CREDENTIALS_FILE}[/yellow]")
+            console.print(f"[yellow]Or run: ifops configure --setup[/yellow]")
             import typer
             raise typer.Exit(1)
+
+        apply_profile(profile)
+    else:
+        from rich.console import Console
+        console = Console()
+        console.print(f"[red]Profile '{profile}' not found in {CREDENTIALS_FILE}[/red]")
+        console.print(f"Available profiles: {', '.join(list_profiles()) or 'none'}")
+        import typer
+        raise typer.Exit(1)

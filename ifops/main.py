@@ -14,7 +14,7 @@ from ifops.commands import apprunner, amplify, ecr, ec2, ecs, s3, cicd, ssl, pro
 from ifops.core.config import (
     load_config, save_config, get_config_dir,
     load_credentials, save_credentials, list_profiles, apply_profile,
-    CREDENTIALS_FILE
+    handle_profile_param, CREDENTIALS_FILE
 )
 from ifops.utils.logger import setup_logging
 
@@ -158,15 +158,8 @@ def main(
     else:
         setup_logging("WARNING")
 
-    # Apply profile credentials if specified
-    if profile:
-        creds = load_credentials(profile)
-        if creds:
-            apply_profile(profile)
-        else:
-            console.print(f"[red]Profile '{profile}' not found in {CREDENTIALS_FILE}[/red]")
-            console.print(f"Available profiles: {', '.join(list_profiles()) or 'none'}")
-            raise typer.Exit(1)
+    # Apply profile credentials if specified (with validation)
+    handle_profile_param(profile)
 
 
 def cli():
