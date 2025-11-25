@@ -6,8 +6,18 @@ from typing import Optional, List
 from rich.console import Console
 from rich.table import Table
 
+from ifops.core.config import handle_profile_param
+
 app = typer.Typer(no_args_is_help=True)
 console = Console()
+
+
+@app.callback()
+def ec2_callback(
+    profile: Optional[str] = typer.Option(None, "--profile", "-p", help="AWS profile to use")
+):
+    """EC2 instance management."""
+    handle_profile_param(profile)
 
 
 @app.command("create")

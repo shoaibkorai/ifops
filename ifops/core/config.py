@@ -117,3 +117,21 @@ def apply_profile(profile: str) -> None:
         os.environ["AWS_SECRET_ACCESS_KEY"] = creds["aws_secret_access_key"]
         if creds.get("region"):
             os.environ["AWS_DEFAULT_REGION"] = creds["region"]
+
+
+def handle_profile_param(profile: Optional[str]) -> None:
+    """
+    Handle profile parameter in commands.
+    This allows --profile to work both globally and per-command.
+    """
+    if profile:
+        creds = load_credentials(profile)
+        if creds:
+            apply_profile(profile)
+        else:
+            from rich.console import Console
+            console = Console()
+            console.print(f"[red]Profile '{profile}' not found in {CREDENTIALS_FILE}[/red]")
+            console.print(f"Available profiles: {', '.join(list_profiles()) or 'none'}")
+            import typer
+            raise typer.Exit(1)

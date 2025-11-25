@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-IFOps CLI - AWS Infrastructure Management Tool
+IFOps CLI -  Infrastructure Management Tool
 
 Main entry point for the CLI application.
 """
@@ -24,8 +24,7 @@ app = typer.Typer(
     name="ifops",
     help="IFOps - AWS Infrastructure Management CLI",
     no_args_is_help=True,
-    rich_markup_mode="rich",
-    context_settings={"allow_interspersed_args": True}
+    rich_markup_mode="rich"
 )
 
 # Register command groups
