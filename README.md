@@ -258,6 +258,24 @@ resources:
 
 See [docs/RESOURCES.md](docs/RESOURCES.md) for complete resource documentation.
 
+**Team Collaboration:**
+
+When working with teammates on the same project:
+
+1. **Commit `infra.yaml` to git** - This is your infrastructure definition
+2. **Don't commit `~/.ifops/projects/`** - This is local state (add to `.gitignore`)
+3. **Teammates workflow:**
+   ```bash
+   git clone <your-repo>
+   cd <your-project>
+
+   # The tool finds infra.yaml in current directory automatically
+   ifops project plan my-project --profile their-profile
+   ifops project apply my-project --profile their-profile
+   ```
+4. Each team member maintains their own state in `~/.ifops/projects/`
+5. The tool automatically updates the config path when run from different locations
+
 ## Project Structure
 
 ```

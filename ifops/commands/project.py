@@ -50,19 +50,34 @@ def load_project_config(name: str) -> dict:
     state = load_project_state(name)
     config_path = state.get("config_path")
 
+    # Try 1: Original stored path
     if config_path:
         config_file = Path(config_path)
         if config_file.exists():
             with open(config_file, "r") as f:
                 return yaml.safe_load(f) or {}
 
-    # Fallback: try current directory
+    # Try 2: Current directory fallback
     cwd_config = Path.cwd() / "infra.yaml"
     if cwd_config.exists():
+        # Update state with new config path
+        state["config_path"] = str(cwd_config)
+        save_project_state(name, state)
+
         with open(cwd_config, "r") as f:
             return yaml.safe_load(f) or {}
 
-    return {}
+    # Config not found - show helpful error
+    console.print(f"[red]✗ Cannot find infra.yaml for project '{name}'[/red]")
+    console.print(f"[yellow]Tried:[/yellow]")
+    if config_path:
+        console.print(f"  1. {config_path} (original)")
+    console.print(f"  2. {cwd_config} (current directory)")
+    console.print(f"\n[yellow]Solutions:[/yellow]")
+    console.print(f"  • Run this command from the directory containing infra.yaml")
+    console.print(f"  • Or create a new infra.yaml: [cyan]ifops project create {name}[/cyan]")
+    import typer
+    raise typer.Exit(1)
 
 
 def save_project_state(name: str, state: dict) -> None:
