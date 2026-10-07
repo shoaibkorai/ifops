@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IFOps - AWS Infrastructure Management CLI Tool</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IFOps is a powerful command-line tool for managing AWS infrastructure with both imperative commands and declarative infrastructure as code.">
+    <meta name="author" content="IFOps Team">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome JS-->
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+</head>
+
+<body>
+    <header class="header fixed-top">
+
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+	                <div class="site-logo"><a class="navbar-brand" href="index.html"><span class="logo-text"><i class="fa-brands fa-aws me-2"></i>IF<span class="text-alt">Ops</span></span></a></div>
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+
+					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+						<li class="list-inline-item"><a href="https://github.com/shoaibkorai/ifops"><i class="fa-brands fa-github fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-python fa-fw"></i></a></li>
+		            </ul><!--//social-list-->
+		            <a href="docs-page.html" class="btn btn-primary d-none d-lg-flex">Get Started</a>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+
+
+    <div class="page-header theme-bg-dark py-5 text-center position-relative">
+	    <div class="theme-bg-shapes-right"></div>
+	    <div class="theme-bg-shapes-left"></div>
+	    <div class="container">
+		    <h1 class="page-heading single-col-max mx-auto">IFOps Documentation</h1>
+		    <div class="page-intro single-col-max mx-auto">Powerful AWS infrastructure management made simple. Manage EC2, S3, ECR, ECS, App Runner, and more with intuitive CLI commands or declarative YAML configuration.</div>
+		    <div class="main-search-box pt-3 d-block mx-auto">
+                 <form class="search-form w-100">
+		            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+             </div>
+	    </div>
+    </div><!--//page-header-->
+   <div class="page-content">
+	    <div class="container">
+		    <div class="docs-overview py-5">
+			    <div class="row justify-content-center">
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fas fa-rocket"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">Getting Started</span>
+							    </h5>
+							    <div class="card-text">
+								    Learn how to install IFOps, configure your AWS credentials, and get up and running with your first infrastructure commands.
+							    </div>
+							    <a class="card-link-mask" href="docs-page.html#section-1"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fas fa-server"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">EC2 Management</span>
+							    </h5>
+							    <div class="card-text">
+								    Create, manage, and monitor EC2 instances with simple commands. Start, stop, terminate, and modify instances effortlessly.
+							    </div>
+							    <a class="card-link-mask" href="docs-page.html#section-2"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fas fa-database fa-fw"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">S3 Storage</span>
+							    </h5>
+							    <div class="card-text">
+								    Manage S3 buckets, upload files, configure static websites, set up CORS, and sync directories with powerful S3 commands.
+							    </div>
+							    <a class="card-link-mask" href="docs-page.html#section-3"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fa-brands fa-docker fa-fw"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">Container Services</span>
+							    </h5>
+							    <div class="card-text">
+								    Work with ECR repositories for Docker images and ECS clusters for container orchestration. Build, push, and deploy containers.
+							    </div>
+							    <a class="card-link-mask" href="docs-page.html#section-4"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fas fa-cloud-upload-alt"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">Deployment Services</span>
+							    </h5>
+							    <div class="card-text">
+								    Deploy applications to AWS App Runner and Amplify. Manage serverless deployments, custom domains, and auto-scaling.
+							    </div>
+							    <a class="card-link-mask" href="docs-page.html#section-5"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fas fa-lock"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">SSL & CI/CD</span>
+							    </h5>
+							    <div class="card-text">
+								    Request and manage SSL certificates with ACM. Automate deployments with CI/CD pipelines for ECR, ECS, App Runner, and more.
+							    </div>
+							    <a class="card-link-mask" href="docs-page.html#section-6"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fas fa-file-code"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">Declarative Mode</span>
+							    </h5>
+							    <div class="card-text">
+								    Define your infrastructure in YAML files. Plan changes, apply configurations, and manage state like Terraform.
+							    </div>
+							    <a class="card-link-mask" href="docs-page.html#section-7"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fas fa-cog"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">Configuration</span>
+							    </h5>
+							    <div class="card-text">
+								    Manage multiple AWS profiles, configure credentials, and customize IFOps settings for your team workflows.
+							    </div>
+							    <a class="card-link-mask" href="docs-page.html#section-8"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+				    <div class="col-12 col-lg-4 py-3">
+					    <div class="card shadow-sm">
+						    <div class="card-body">
+							    <h5 class="card-title mb-3">
+								    <span class="theme-icon-holder card-icon-holder me-2">
+								        <i class="fas fa-lightbulb"></i>
+							        </span><!--//card-icon-holder-->
+							        <span class="card-title-text">FAQs</span>
+							    </h5>
+							    <div class="card-text">
+								    Common questions about IFOps usage, troubleshooting, best practices, and advanced configurations.
+							    </div>
+							    <a class="card-link-mask" href="docs-page.html#section-9"></a>
+						    </div><!--//card-body-->
+					    </div><!--//card-->
+				    </div><!--//col-->
+			    </div><!--//row-->
+		    </div><!--//container-->
+		</div><!--//container-->
+    </div><!--//page-content-->
+
+    <section class="cta-section text-center py-5 theme-bg-dark position-relative">
+	    <div class="theme-bg-shapes-right"></div>
+	    <div class="theme-bg-shapes-left"></div>
+	    <div class="container">
+		    <h3 class="mb-2 text-white mb-3">Simplify Your AWS Infrastructure Management</h3>
+		    <div class="section-intro text-white mb-3 single-col-max mx-auto">IFOps combines the power of imperative CLI commands with declarative infrastructure as code. Manage EC2, S3, ECR, ECS, App Runner, Amplify, SSL certificates, and CI/CD pipelines - all from one unified tool.</div>
+		    <div class="pt-3 text-center">
+			    <a class="btn btn-light" href="docs-page.html">View Documentation<i class="fas fa-arrow-alt-circle-right ms-2"></i></a>
+		    </div>
+	    </div>
+    </section><!--//cta-section-->
+
+    <footer class="footer">
+
+	    <div class="footer-bottom text-center py-5">
+
+		    <ul class="social-list list-unstyled pb-4 mb-0">
+			    <li class="list-inline-item"><a href="https://github.com/shoaibkorai/ifops"><i class="fa-brands fa-github fa-fw"></i></a></li>
+	            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-python fa-fw"></i></a></li>
+	            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-aws fa-fw"></i></a></li>
+	        </ul><!--//social-list-->
+
+            <small class="copyright">IFOps v0.1.0 - AWS Infrastructure Management CLI · Theme: <a href="https://themes.3rdwavemedia.com/" target="_blank">CoderDocs</a> by Xiaoying Riley</small>
+
+
+	    </div>
+
+    </footer>
+
+    <!-- Javascript -->
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Page Specific JS -->
+    <script src="assets/plugins/smoothscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="assets/js/highlight-custom.js"></script>
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+</body>
+</html>

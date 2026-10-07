@@ -6,5 +6,5 @@ EC2, ECS, ECR, S3, App Runner, Amplify, SSL certificates, and CI/CD pipelines.
 """
 
 __version__ = "0.1.0"
-__author__ = "Your Name"
-__email__ = "your.email@example.com"
+__author__ = "Muhammad Shoaib Korai"
+__email__ = "shoaibkoraidevops@gmail.com"

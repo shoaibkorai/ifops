@@ -20,7 +20,7 @@ A powerful command-line tool for managing AWS infrastructure including EC2, ECS,
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ifops.git
+git clone https://github.com/shoaibkorai/ifops.git
 cd ifops
 
 # Run the install script
@@ -396,7 +396,9 @@ Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) gu
 
 ## Author
 
-Your Name - your.email@example.com
+**Muhammad Shoaib Korai** (shoaibkoraidevops@gmail.com)
+
+IFOps began as a two-person Final Year Project. Shoaib wrote the original prototype (InfraFlowOps) and later rebuilt it as IFOps. Teammate Sikander Ali ([@SIKANDERKUMBHAR](https://github.com/SIKANDERKUMBHAR)) handled testing and maintained the team repository.
 
 ## Acknowledgments
 

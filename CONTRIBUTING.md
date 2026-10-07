@@ -7,7 +7,7 @@ Thank you for your interest in contributing to IFOps!
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/yourusername/ifops.git
+git clone https://github.com/shoaibkorai/ifops.git
 cd ifops
 
 # Run the automated installer

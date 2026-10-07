@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IFOps Documentation - AWS Infrastructure Management CLI</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete documentation for IFOps - AWS Infrastructure Management CLI Tool">
+    <meta name="author" content="IFOps Team">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome JS-->
+    <script defer src="assets/fontawesome/js/all.min.js"></script>
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.2/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="assets/plugins/simplelightbox/simple-lightbox.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme.css">
+
+</head>
+
+<body class="docs-page">
+    <header class="header fixed-top">
+        <div class="branding docs-branding">
+            <div class="container-fluid position-relative py-2">
+                <div class="docs-logo-wrapper">
+					<button id="docs-sidebar-toggler" class="docs-sidebar-toggler docs-sidebar-visible me-2 d-xl-none" type="button">
+	                    <span></span>
+	                    <span></span>
+	                    <span></span>
+	                </button>
+	                <div class="site-logo"><a class="navbar-brand" href="index.html"><span class="logo-text"><i class="fa-brands fa-aws me-2"></i>IF<span class="text-alt">Ops</span></span></a></div>
+                </div><!--//docs-logo-wrapper-->
+	            <div class="docs-top-utilities d-flex justify-content-end align-items-center">
+	                <div class="top-search-box d-none d-lg-flex">
+		                <form class="search-form">
+				            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+				            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+				        </form>
+	                </div>
+
+					<ul class="social-list list-inline mx-md-3 mx-lg-5 mb-0 d-none d-lg-flex">
+						<li class="list-inline-item"><a href="https://github.com/shoaibkorai/ifops"><i class="fa-brands fa-github fa-fw"></i></a></li>
+			            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-python fa-fw"></i></a></li>
+		            </ul><!--//social-list-->
+		            <a href="https://github.com/shoaibkorai/ifops" class="btn btn-primary d-none d-lg-flex">Download</a>
+	            </div><!--//docs-top-utilities-->
+            </div><!--//container-->
+        </div><!--//branding-->
+    </header><!--//header-->
+
+
+    <div class="docs-wrapper">
+	    <div id="docs-sidebar" class="docs-sidebar">
+		    <div class="top-search-box d-lg-none p-3">
+                <form class="search-form">
+		            <input type="text" placeholder="Search the docs..." name="search" class="form-control search-input">
+		            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
+		        </form>
+            </div>
+		    <nav id="docs-nav" class="docs-nav navbar">
+			    <ul class="section-items list-unstyled nav flex-column pb-3">
+				    <li class="nav-item section-title"><a class="nav-link scrollto active" href="#section-1"><span class="theme-icon-holder me-2"><i class="fas fa-rocket"></i></span>Getting Started</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-1">Introduction</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-2">Installation</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-3">Quick Start</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-1-4">CLI Structure</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-2"><span class="theme-icon-holder me-2"><i class="fas fa-server"></i></span>EC2 Management</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-2-1">Create Instance</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-2-2">List & Status</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-2-3">Start, Stop & Terminate</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-2-4">Modify Instance</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-3"><span class="theme-icon-holder me-2"><i class="fas fa-database"></i></span>S3 Storage</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-3-1">Bucket Operations</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-3-2">Upload & Sync</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-3-3">Static Site & CORS</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-4"><span class="theme-icon-holder me-2"><i class="fa-brands fa-docker"></i></span>Container Services</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-4-1">ECR Repository</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-4-2">ECR Images</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-4-3">ECS Clusters</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-5"><span class="theme-icon-holder me-2"><i class="fas fa-cloud-upload-alt"></i></span>Deployment Services</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-5-1">App Runner</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-5-2">Amplify</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-6"><span class="theme-icon-holder me-2"><i class="fas fa-lock"></i></span>SSL & CI/CD</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-6-1">SSL Certificates</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-6-2">CI/CD Pipelines</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-7"><span class="theme-icon-holder me-2"><i class="fas fa-file-code"></i></span>Declarative Mode</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-7-1">Project Commands</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-7-2">infra.yaml Format</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-7-3">Resource Types</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-8"><span class="theme-icon-holder me-2"><i class="fas fa-cog"></i></span>Configuration</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-8-1">Credential Setup</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-8-2">Multiple Profiles</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-8-3">Config Files</a></li>
+				    <li class="nav-item section-title mt-3"><a class="nav-link scrollto" href="#section-9"><span class="theme-icon-holder me-2"><i class="fas fa-lightbulb"></i></span>FAQs</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-9-1">General Questions</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-9-2">Troubleshooting</a></li>
+				    <li class="nav-item"><a class="nav-link scrollto" href="#item-9-3">Best Practices</a></li>
+			    </ul>
+
+		    </nav><!--//docs-nav-->
+	    </div><!--//docs-sidebar-->
+	    <div class="docs-content">
+		    <div class="container">
+
+			    <!-- SECTION 1: Getting Started -->
+			    <article class="docs-article" id="section-1">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Getting Started <span class="docs-time">Last updated: 2024</span></h1>
+					    <section class="docs-intro">
+						    <p>IFOps (Infrastructure Operations) is a powerful command-line tool for managing AWS infrastructure. It provides both <strong>imperative commands</strong> for direct resource management and <strong>declarative infrastructure as code</strong> using YAML configuration files similar to Terraform.</p>
+						</section><!--//docs-intro-->
+				    </header>
+
+				    <section class="docs-section" id="item-1-1">
+						<h2 class="section-heading">Introduction</h2>
+						<p>IFOps addresses several key challenges in AWS infrastructure management:</p>
+						<ul>
+						    <li><strong>Simplified CLI:</strong> Intuitive, memorable commands instead of complex AWS CLI syntax</li>
+						    <li><strong>Infrastructure as Code:</strong> Terraform-like declarative configuration through YAML files</li>
+						    <li><strong>Multi-Service Management:</strong> Unified interface for EC2, S3, ECR, ECS, App Runner, Amplify, SSL, and CI/CD</li>
+						    <li><strong>Multi-Account Support:</strong> Built-in profile management for multiple AWS accounts</li>
+						    <li><strong>State Management:</strong> Automatic tracking of deployed resources</li>
+						</ul>
+
+                        <h5>Supported AWS Services:</h5>
+                        <div class="table-responsive my-4">
+							<table class="table table-bordered">
+								<tbody>
+								    <tr>
+									    <th class="theme-bg-light">EC2</th>
+									    <td>Create, manage, start, stop, terminate instances</td>
+									</tr>
+									<tr>
+									    <th class="theme-bg-light">S3</th>
+									    <td>Buckets, uploads, sync, static sites, CORS</td>
+									</tr>
+									<tr>
+									    <th class="theme-bg-light">ECR</th>
+									    <td>Docker image repositories</td>
+									</tr>
+									<tr>
+									    <th class="theme-bg-light">ECS</th>
+									    <td>Container orchestration clusters</td>
+									</tr>
+									<tr>
+									    <th class="theme-bg-light">App Runner</th>
+									    <td>Serverless container deployments</td>
+									</tr>
+									<tr>
+									    <th class="theme-bg-light">Amplify</th>
+									    <td>Frontend hosting and CI/CD</td>
+									</tr>
+									<tr>
+									    <th class="theme-bg-light">ACM</th>
+									    <td>SSL/TLS certificates</td>
+									</tr>
+									<tr>
+									    <th class="theme-bg-light">CI/CD</th>
+									    <td>Deployment pipelines</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-1-2">
+						<h2 class="section-heading">Installation</h2>
+						<p>IFOps requires Python 3.9 or higher. Choose your preferred installation method:</p>
+
+						<h5>Automated Installation</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Clone repository
+git clone https://github.com/shoaibkorai/ifops.git
+cd ifops
+
+# Run installation script
+./install.sh
+
+# Activate virtual environment
+source venv/bin/activate</code></pre>
+						</div>
+
+						<h5 class="pt-4">Manual Installation</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Create virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install package
+pip install -e .
+
+# Or with development dependencies
+pip install -e ".[dev]"</code></pre>
+						</div>
+
+						<h5 class="pt-4">Dependencies</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="yaml hljs"># Core dependencies
+typer[all] >= 0.9.0
+rich >= 13.0.0
+boto3 >= 1.28.0
+botocore >= 1.31.0
+pyyaml >= 6.0</code></pre>
+						</div>
+
+                        <div class="callout-block callout-block-info">
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder me-1">
+		                                <i class="fas fa-info-circle"></i>
+		                            </span>
+	                                Note
+	                            </h4>
+                                <p>Make sure you have AWS credentials configured before using IFOps. You can configure them using <code>ifops configure --setup</code> or use existing AWS credentials from <code>~/.aws/credentials</code>.</p>
+                            </div>
+                        </div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-1-3">
+						<h2 class="section-heading">Quick Start</h2>
+						<p>Get up and running with IFOps in minutes:</p>
+
+						<h5>1. Configure AWS Credentials</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Interactive setup wizard
+ifops configure --setup
+
+# Verify credentials
+ifops configure --verify</code></pre>
+						</div>
+
+						<h5 class="pt-4">2. Create Your First S3 Bucket</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Create a bucket with versioning enabled
+ifops s3 create my-first-bucket --versioning --region us-east-1
+
+# List all buckets
+ifops s3 list</code></pre>
+						</div>
+
+						<h5 class="pt-4">3. Launch an EC2 Instance</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Create an EC2 instance
+ifops ec2 create web-server \
+  --ami ami-0c7217cdde317cfec \
+  --type t3.micro \
+  --key my-key-pair
+
+# Check instance status
+ifops ec2 list --state running</code></pre>
+						</div>
+
+						<h5 class="pt-4">4. Or Use Declarative Mode</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Create a project
+ifops project create my-app --region us-east-1
+
+# Edit infra.yaml, then plan and apply
+ifops project plan my-app
+ifops project apply my-app</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-1-4">
+						<h2 class="section-heading">CLI Structure</h2>
+						<p>IFOps uses a hierarchical command structure:</p>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops [GLOBAL_OPTIONS] COMMAND [SUBCOMMAND] [ARGUMENTS] [OPTIONS]</code></pre>
+						</div>
+
+						<h5 class="pt-4">Global Options</h5>
+						<div class="table-responsive my-4">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Option</th>
+										<th>Description</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><code>--verbose</code></td>
+										<td>Enable verbose output</td>
+									</tr>
+									<tr>
+										<td><code>--debug</code></td>
+										<td>Enable debug mode with full tracebacks</td>
+									</tr>
+									<tr>
+										<td><code>--profile &lt;name&gt;</code></td>
+										<td>Use specific AWS profile</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<h5>Example Usage</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Use production profile with verbose output
+ifops --profile production --verbose ec2 list --region eu-west-1
+
+# Check version
+ifops version</code></pre>
+						</div>
+					</section><!--//section-->
+
+			    </article>
+
+			    <!-- SECTION 2: EC2 Management -->
+			    <article class="docs-article" id="section-2">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">EC2 Management</h1>
+					    <section class="docs-intro">
+						    <p>Manage Amazon EC2 instances with simple, intuitive commands. Create, list, start, stop, terminate, and modify instances with ease.</p>
+						</section>
+				    </header>
+
+				    <section class="docs-section" id="item-2-1">
+						<h2 class="section-heading">Create Instance</h2>
+						<p>Create a new EC2 instance with the <code>ifops ec2 create</code> command:</p>
+
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops ec2 create &lt;name&gt; --ami &lt;ami-id&gt; [OPTIONS]</code></pre>
+						</div>
+
+						<h5 class="pt-4">Options</h5>
+						<div class="table-responsive my-4">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Option</th>
+										<th>Description</th>
+										<th>Default</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><code>--ami</code></td>
+										<td>AMI ID (required)</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td><code>--type</code></td>
+										<td>Instance type</td>
+										<td>t3.micro</td>
+									</tr>
+									<tr>
+										<td><code>--key</code></td>
+										<td>SSH key pair name</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td><code>--sg</code></td>
+										<td>Security group IDs (comma-separated)</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td><code>--subnet</code></td>
+										<td>Subnet ID</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td><code>--user-data</code></td>
+										<td>Path to user data script</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td><code>--volume-size</code></td>
+										<td>Root volume size in GB</td>
+										<td>8</td>
+									</tr>
+									<tr>
+										<td><code>--region</code></td>
+										<td>AWS region</td>
+										<td>default</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<h5>Example</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Create a web server instance
+ifops ec2 create web-server \
+  --ami ami-0c7217cdde317cfec \
+  --type t3.small \
+  --key production-key \
+  --sg sg-12345678,sg-87654321 \
+  --volume-size 20 \
+  --region us-east-1</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-2-2">
+						<h2 class="section-heading">List & Status</h2>
+
+						<h5>List Instances</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># List all instances
+ifops ec2 list
+
+# Filter by state
+ifops ec2 list --state running
+ifops ec2 list --state stopped
+
+# Specify region
+ifops ec2 list --region eu-west-1</code></pre>
+						</div>
+
+						<h5 class="pt-4">Get Instance Status</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Get detailed status of an instance
+ifops ec2 status i-1234567890abcdef0</code></pre>
+						</div>
+
+						<p>The status command shows detailed information including:</p>
+						<ul>
+						    <li>Instance ID and Name</li>
+						    <li>State (running, stopped, etc.)</li>
+						    <li>Instance type</li>
+						    <li>Public and private IP addresses</li>
+						    <li>Launch time</li>
+						    <li>Security groups</li>
+						</ul>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-2-3">
+						<h2 class="section-heading">Start, Stop & Terminate</h2>
+
+						<h5>Start Instances</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Start one or more instances
+ifops ec2 start i-1234567890abcdef0
+ifops ec2 start i-1234567890abcdef0,i-0987654321fedcba0</code></pre>
+						</div>
+
+						<h5 class="pt-4">Stop Instances</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Stop an instance (without terminating)
+ifops ec2 stop i-1234567890abcdef0</code></pre>
+						</div>
+
+						<h5 class="pt-4">Terminate Instances</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Terminate an instance (permanent)
+ifops ec2 terminate i-1234567890abcdef0
+
+# Skip confirmation prompt
+ifops ec2 terminate i-1234567890abcdef0 --force</code></pre>
+						</div>
+
+                        <div class="callout-block callout-block-danger">
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder me-1">
+		                                <i class="fas fa-exclamation-triangle"></i>
+		                            </span>
+	                                Warning
+	                            </h4>
+                                <p>Terminating an instance is <strong>permanent</strong> and cannot be undone. All data on instance store volumes will be lost. Use <code>stop</code> if you want to preserve the instance.</p>
+                            </div>
+                        </div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-2-4">
+						<h2 class="section-heading">Modify Instance</h2>
+						<p>Modify instance attributes (instance must be stopped first):</p>
+
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Stop the instance first
+ifops ec2 stop i-1234567890abcdef0
+
+# Modify instance type
+ifops ec2 modify i-1234567890abcdef0 --type t3.medium
+
+# Start the instance again
+ifops ec2 start i-1234567890abcdef0</code></pre>
+						</div>
+					</section><!--//section-->
+			    </article><!--//docs-article-->
+
+
+			    <!-- SECTION 3: S3 Storage -->
+			    <article class="docs-article" id="section-3">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">S3 Storage</h1>
+					    <section class="docs-intro">
+						    <p>Manage Amazon S3 buckets for object storage. Create buckets, upload files, configure static websites, and set up CORS policies.</p>
+						</section>
+				    </header>
+
+				    <section class="docs-section" id="item-3-1">
+						<h2 class="section-heading">Bucket Operations</h2>
+
+						<h5>Create Bucket</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Create a basic bucket
+ifops s3 create my-bucket
+
+# Create with versioning enabled
+ifops s3 create my-bucket --versioning
+
+# Create in specific region
+ifops s3 create my-bucket --region eu-west-1
+
+# Create with public access (use carefully!)
+ifops s3 create my-bucket --public</code></pre>
+						</div>
+
+						<h5 class="pt-4">List Buckets</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># List all buckets in the account
+ifops s3 list</code></pre>
+						</div>
+
+						<h5 class="pt-4">Delete Bucket</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Delete an empty bucket
+ifops s3 delete my-bucket
+
+# Force delete (removes all objects first)
+ifops s3 delete my-bucket --force</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-3-2">
+						<h2 class="section-heading">Upload & Sync</h2>
+
+						<h5>Upload Files</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Upload a single file
+ifops s3 upload my-bucket --source ./file.txt
+
+# Upload directory recursively
+ifops s3 upload my-bucket --source ./dist --recursive
+
+# Upload with prefix (folder in S3)
+ifops s3 upload my-bucket --source ./dist --recursive --prefix v1.0.0</code></pre>
+						</div>
+
+						<h5 class="pt-4">Sync Directory</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Sync local directory to S3
+ifops s3 sync my-bucket --source ./dist
+
+# Sync with delete (removes files in S3 not in source)
+ifops s3 sync my-bucket --source ./dist --delete
+
+# Sync with prefix
+ifops s3 sync my-bucket --source ./dist --prefix assets/</code></pre>
+						</div>
+
+                        <div class="callout-block callout-block-success">
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder me-1">
+		                                <i class="fas fa-thumbs-up"></i>
+		                            </span>
+	                                Tip
+	                            </h4>
+                                <p>Use <code>sync</code> for deployments as it only uploads changed files, making it faster and more efficient than <code>upload</code>.</p>
+                            </div>
+                        </div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-3-3">
+						<h2 class="section-heading">Static Site & CORS</h2>
+
+						<h5>Configure Static Website</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Enable static website hosting
+ifops s3 static-site my-bucket
+
+# Custom index and error documents
+ifops s3 static-site my-bucket --index index.html --error 404.html</code></pre>
+						</div>
+
+						<h5 class="pt-4">Configure CORS</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Allow all origins
+ifops s3 cors my-bucket
+
+# Specify allowed origins
+ifops s3 cors my-bucket --origins "https://example.com,https://app.example.com"</code></pre>
+						</div>
+					</section><!--//section-->
+			    </article><!--//docs-article-->
+
+
+			    <!-- SECTION 4: Container Services -->
+			    <article class="docs-article" id="section-4">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Container Services</h1>
+					    <section class="docs-intro">
+						    <p>Manage Docker containers with ECR (Elastic Container Registry) for image storage and ECS (Elastic Container Service) for orchestration.</p>
+						</section>
+				    </header>
+
+				    <section class="docs-section" id="item-4-1">
+						<h2 class="section-heading">ECR Repository</h2>
+
+						<h5>Create Repository</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Create a repository with scanning enabled
+ifops ecr create my-app-repo --scan
+
+# Create with tag immutability
+ifops ecr create my-app-repo --scan --immutable
+
+# Specify encryption type
+ifops ecr create my-app-repo --encryption KMS</code></pre>
+						</div>
+
+						<h5 class="pt-4">List Repositories</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops ecr list</code></pre>
+						</div>
+
+						<h5 class="pt-4">Delete Repository</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Delete empty repository
+ifops ecr delete my-app-repo
+
+# Force delete (removes all images)
+ifops ecr delete my-app-repo --force</code></pre>
+						</div>
+
+						<h5 class="pt-4">Docker Login</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Print docker login command
+ifops ecr login --region us-east-1
+
+# Execute login directly
+ifops ecr login --region us-east-1 --execute</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-4-2">
+						<h2 class="section-heading">ECR Images</h2>
+
+						<h5>List Images</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops ecr images my-app-repo</code></pre>
+						</div>
+
+						<h5 class="pt-4">Delete Image</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Delete by tag
+ifops ecr delete-image my-app-repo --tag v1.0.0
+
+# Delete by digest
+ifops ecr delete-image my-app-repo --digest sha256:abc123...</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-4-3">
+						<h2 class="section-heading">ECS Clusters</h2>
+
+						<h5>Create Cluster</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Create with Fargate capacity providers
+ifops ecs create-cluster production-cluster
+
+# Specify capacity providers
+ifops ecs create-cluster production-cluster \
+  --capacity-providers FARGATE,FARGATE_SPOT</code></pre>
+						</div>
+
+						<h5 class="pt-4">List Clusters</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops ecs list-clusters</code></pre>
+						</div>
+
+						<h5 class="pt-4">Delete Cluster</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops ecs delete-cluster production-cluster</code></pre>
+						</div>
+					</section><!--//section-->
+			    </article><!--//docs-article-->
+
+
+			    <!-- SECTION 5: Deployment Services -->
+			    <article class="docs-article" id="section-5">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Deployment Services</h1>
+					    <section class="docs-intro">
+						    <p>Deploy applications to AWS using App Runner for containerized apps and Amplify for frontend applications.</p>
+						</section>
+				    </header>
+
+				    <section class="docs-section" id="item-5-1">
+						<h2 class="section-heading">App Runner</h2>
+
+						<h5>Create Service</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops apprunner create my-service \
+  --image 123456789.dkr.ecr.us-east-1.amazonaws.com/my-app:latest \
+  --port 8080 \
+  --cpu 1024 \
+  --memory 2048 \
+  --role arn:aws:iam::123456789:role/AppRunnerRole</code></pre>
+						</div>
+
+						<h5 class="pt-4">Options</h5>
+						<div class="table-responsive my-4">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th>Option</th>
+										<th>Description</th>
+										<th>Default</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><code>--image</code></td>
+										<td>ECR image URI (required)</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td><code>--port</code></td>
+										<td>Container port</td>
+										<td>8080</td>
+									</tr>
+									<tr>
+										<td><code>--cpu</code></td>
+										<td>CPU units (256, 512, 1024, 2048, 4096)</td>
+										<td>1024</td>
+									</tr>
+									<tr>
+										<td><code>--memory</code></td>
+										<td>Memory in MB</td>
+										<td>2048</td>
+									</tr>
+									<tr>
+										<td><code>--role</code></td>
+										<td>IAM role ARN for ECR access (required)</td>
+										<td>-</td>
+									</tr>
+									<tr>
+										<td><code>--auto-deploy</code></td>
+										<td>Enable auto deployments</td>
+										<td>false</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<h5>Other Commands</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># List services
+ifops apprunner list
+
+# Get status
+ifops apprunner status &lt;service-arn&gt;
+
+# Trigger deployment
+ifops apprunner deploy &lt;service-arn&gt;
+
+# Delete service
+ifops apprunner delete &lt;service-arn&gt;</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-5-2">
+						<h2 class="section-heading">Amplify</h2>
+
+						<h5>Create Application</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops amplify create my-frontend \
+  --repo https://github.com/user/repo \
+  --branch main \
+  --token ghp_xxxxxxxxxxxx</code></pre>
+						</div>
+
+						<h5 class="pt-4">Other Commands</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># List applications
+ifops amplify list
+
+# Get deployment status
+ifops amplify status &lt;app-id&gt;
+
+# Trigger deployment
+ifops amplify deploy &lt;app-id&gt;
+
+# Configure custom domain
+ifops amplify domain &lt;app-id&gt; --domain example.com
+
+# Delete application
+ifops amplify delete &lt;app-id&gt;</code></pre>
+						</div>
+					</section><!--//section-->
+			    </article><!--//docs-article-->
+
+
+			    <!-- SECTION 6: SSL & CI/CD -->
+			    <article class="docs-article" id="section-6">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">SSL & CI/CD</h1>
+					    <section class="docs-intro">
+						    <p>Manage SSL certificates with AWS Certificate Manager (ACM) and automate deployments with CI/CD pipelines.</p>
+						</section>
+				    </header>
+
+				    <section class="docs-section" id="item-6-1">
+						<h2 class="section-heading">SSL Certificates</h2>
+
+						<h5>Request Certificate</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Request SSL certificate with DNS validation
+ifops ssl request example.com
+
+# Include alternative names
+ifops ssl request example.com \
+  --alt-names "www.example.com,api.example.com"
+
+# Use email validation instead
+ifops ssl request example.com --validation EMAIL</code></pre>
+						</div>
+
+						<h5 class="pt-4">List Certificates</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># List all certificates
+ifops ssl list
+
+# Filter by status
+ifops ssl list --status ISSUED
+ifops ssl list --status PENDING_VALIDATION</code></pre>
+						</div>
+
+						<h5 class="pt-4">Other Commands</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Get certificate status
+ifops ssl status &lt;certificate-arn&gt;
+
+# Validate DNS records
+ifops ssl validate-dns &lt;certificate-arn&gt;
+
+# Renew certificate
+ifops ssl renew &lt;certificate-arn&gt;
+
+# Delete certificate
+ifops ssl delete &lt;certificate-arn&gt;</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-6-2">
+						<h2 class="section-heading">CI/CD Pipelines</h2>
+
+						<h5>Build and Push to ECR</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Build and push Docker image
+ifops cicd ecr-push my-app-repo --tag v1.0.0
+
+# Custom Dockerfile
+ifops cicd ecr-push my-app-repo \
+  --tag v1.0.0 \
+  --dockerfile ./docker/Dockerfile.prod \
+  --context .</code></pre>
+						</div>
+
+						<h5 class="pt-4">Deploy to Services</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Deploy to ECS
+ifops cicd deploy-ecs my-cluster \
+  --service my-service \
+  --force
+
+# Deploy to App Runner
+ifops cicd deploy-apprunner &lt;service-arn&gt;
+
+# Deploy to Amplify
+ifops cicd deploy-amplify &lt;app-id&gt;
+
+# Deploy to S3
+ifops cicd deploy-s3 my-bucket --source ./dist</code></pre>
+						</div>
+
+						<h5 class="pt-4">Pipeline Management</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># List pipelines
+ifops cicd list-pipelines
+
+# Get pipeline status
+ifops cicd status &lt;pipeline-name&gt;
+
+# Trigger pipeline manually
+ifops cicd trigger &lt;pipeline-name&gt;</code></pre>
+						</div>
+					</section><!--//section-->
+			    </article><!--//docs-article-->
+
+
+			    <!-- SECTION 7: Declarative Mode -->
+			    <article class="docs-article" id="section-7">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Declarative Mode</h1>
+					    <section class="docs-intro">
+						    <p>Define your infrastructure in YAML files and manage it like Terraform. Plan changes, apply configurations, and track state automatically.</p>
+						</section>
+				    </header>
+
+				    <section class="docs-section" id="item-7-1">
+						<h2 class="section-heading">Project Commands</h2>
+
+						<h5>Create Project</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Create a new project
+ifops project create my-web-app --region us-east-1
+
+# With description
+ifops project create my-web-app \
+  --region eu-west-3 \
+  --description "Production web application"</code></pre>
+						</div>
+						<p>This creates an <code>infra.yaml</code> file in the current directory and state in <code>~/.ifops/projects/my-web-app/</code>.</p>
+
+						<h5 class="pt-4">List Projects</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops project list</code></pre>
+						</div>
+
+						<h5 class="pt-4">Show Project</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops project show my-web-app</code></pre>
+						</div>
+
+						<h5 class="pt-4">Plan Changes</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># See what changes will be made
+ifops project plan my-web-app</code></pre>
+						</div>
+						<p>Shows resources to create (+), destroy (-), and unchanged (=).</p>
+
+						<h5 class="pt-4">Apply Changes</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Apply with confirmation
+ifops project apply my-web-app
+
+# Skip confirmation
+ifops project apply my-web-app --auto-approve</code></pre>
+						</div>
+
+						<h5 class="pt-4">Destroy Resources</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Destroy all resources
+ifops project destroy my-web-app
+
+# Skip confirmation
+ifops project destroy my-web-app --auto-approve</code></pre>
+						</div>
+
+						<h5 class="pt-4">Delete Project</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Delete project config and state
+ifops project delete my-web-app
+
+# Force delete even if resources exist
+ifops project delete my-web-app --force</code></pre>
+						</div>
+
+						<h5 class="pt-4">Show Available Resources</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">ifops project resources</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-7-2">
+						<h2 class="section-heading">infra.yaml Format</h2>
+
+						<p>The <code>infra.yaml</code> file defines your infrastructure:</p>
+
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="yaml hljs">name: my-web-app
+description: Production web application
+region: us-east-1
+
+resources:
+  - type: ecr
+    name: my-app-repo
+    scan_on_push: true
+
+  - type: s3
+    name: my-assets-bucket
+    versioning: true
+    static_site: true
+
+  - type: ec2
+    name: web-server
+    ami: ami-0c7217cdde317cfec
+    instance_type: t3.small
+    key_name: my-key
+    volume_size: 20
+
+  - type: ecs-cluster
+    name: app-cluster
+    capacity_providers:
+      - FARGATE
+      - FARGATE_SPOT</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-7-3">
+						<h2 class="section-heading">Resource Types</h2>
+
+						<h5>ECR Repository</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="yaml hljs">- type: ecr
+  name: my-repo
+  scan_on_push: true      # Enable vulnerability scanning
+  immutable: false        # Tag immutability
+  encryption: AES256      # Encryption type (AES256 or KMS)</code></pre>
+						</div>
+
+						<h5 class="pt-4">S3 Bucket</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="yaml hljs">- type: s3
+  name: my-bucket
+  versioning: true        # Enable versioning
+  static_site: true       # Static website hosting
+  public: false           # Public access
+  cors_origins:           # CORS origins
+    - "*"</code></pre>
+						</div>
+
+						<h5 class="pt-4">EC2 Instance</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="yaml hljs">- type: ec2
+  name: my-server
+  ami: ami-0123456789abcdef0
+  instance_type: t3.micro
+  key_name: my-key
+  security_groups:
+    - sg-12345678
+  subnet_id: subnet-12345678
+  volume_size: 20
+  user_data: /path/to/script.sh</code></pre>
+						</div>
+
+						<h5 class="pt-4">ECS Cluster</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="yaml hljs">- type: ecs-cluster
+  name: my-cluster
+  capacity_providers:
+    - FARGATE
+    - FARGATE_SPOT
+  container_insights: true</code></pre>
+						</div>
+					</section><!--//section-->
+			    </article><!--//docs-article-->
+
+
+			    <!-- SECTION 8: Configuration -->
+			    <article class="docs-article" id="section-8">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">Configuration</h1>
+					    <section class="docs-intro">
+						    <p>Configure IFOps credentials, manage multiple AWS profiles, and customize settings for your workflow.</p>
+						</section>
+				    </header>
+
+				    <section class="docs-section" id="item-8-1">
+						<h2 class="section-heading">Credential Setup</h2>
+
+						<h5>Interactive Setup</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Start interactive credential setup
+ifops configure --setup</code></pre>
+						</div>
+						<p>The setup wizard will prompt for:</p>
+						<ul>
+						    <li>AWS Access Key ID</li>
+						    <li>AWS Secret Access Key</li>
+						    <li>Default region</li>
+						    <li>Profile name</li>
+						</ul>
+
+						<h5 class="pt-4">Verify Credentials</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Verify default profile
+ifops configure --verify
+
+# Verify specific profile
+ifops configure --verify --profile production</code></pre>
+						</div>
+
+						<h5 class="pt-4">Show Configuration</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Show all configuration
+ifops configure --show
+
+# Show specific profile
+ifops configure --profile my-profile</code></pre>
+						</div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-8-2">
+						<h2 class="section-heading">Multiple Profiles</h2>
+
+						<p>IFOps supports multiple AWS profiles for managing different accounts or environments:</p>
+
+						<h5>Create Multiple Profiles</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Run setup multiple times with different profile names
+ifops configure --setup  # Creates 'default'
+ifops configure --setup  # Creates 'production'
+ifops configure --setup  # Creates 'staging'</code></pre>
+						</div>
+
+						<h5 class="pt-4">Use Profiles</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs"># Use with any command
+ifops --profile production ec2 list
+ifops --profile staging s3 list
+ifops --profile default ecr list</code></pre>
+						</div>
+
+                        <div class="callout-block callout-block-info">
+                            <div class="content">
+                                <h4 class="callout-title">
+	                                <span class="callout-icon-holder me-1">
+		                                <i class="fas fa-info-circle"></i>
+		                            </span>
+	                                Credential Lookup Order
+	                            </h4>
+                                <p>IFOps looks for credentials in this order:</p>
+                                <ol>
+                                    <li><code>--profile</code> CLI argument</li>
+                                    <li><code>AWS_PROFILE</code> environment variable</li>
+                                    <li><code>~/.ifops/credentials</code> file</li>
+                                    <li><code>~/.aws/credentials</code> file (standard AWS)</li>
+                                </ol>
+                            </div>
+                        </div>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-8-3">
+						<h2 class="section-heading">Config Files</h2>
+
+						<h5>Directory Structure</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="bash hljs">~/.ifops/
+├── config.yaml           # Global configuration
+├── credentials           # AWS credentials (INI format)
+└── projects/             # Project state files
+    ├── project-1/
+    │   └── state.json
+    └── project-2/
+        └── state.json</code></pre>
+						</div>
+
+						<h5 class="pt-4">config.yaml</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="yaml hljs">aws:
+  region: us-east-1
+  profile: default
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"</code></pre>
+						</div>
+
+						<h5 class="pt-4">credentials</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="ini hljs">[default]
+aws_access_key_id = AKIAXXXXXXXXXX
+aws_secret_access_key = xxxxxxxxxxxxxxxx
+region = us-east-1
+
+[production]
+aws_access_key_id = AKIAYYYYYYYYYY
+aws_secret_access_key = yyyyyyyyyyyy
+region = eu-west-3
+
+[staging]
+aws_access_key_id = AKIAZZZZZZZZZZ
+aws_secret_access_key = zzzzzzzzzzzzzz
+region = us-west-2</code></pre>
+						</div>
+
+						<h5 class="pt-4">State File (state.json)</h5>
+						<div class="docs-code-block">
+							<pre class="shadow-lg rounded"><code class="json hljs">{
+  "resources": [
+    {
+      "type": "ecr",
+      "name": "my-repo",
+      "id": "123456789.dkr.ecr.us-east-1.amazonaws.com/my-repo",
+      "created_at": "2024-01-15T10:30:00"
+    }
+  ],
+  "config_path": "/path/to/infra.yaml",
+  "created_at": "2024-01-15T10:00:00",
+  "updated_at": "2024-01-15T10:30:00"
+}</code></pre>
+						</div>
+					</section><!--//section-->
+			    </article><!--//docs-article-->
+
+
+			    <!-- SECTION 9: FAQs -->
+			    <article class="docs-article" id="section-9">
+				    <header class="docs-header">
+					    <h1 class="docs-heading">FAQs</h1>
+					    <section class="docs-intro">
+						    <p>Frequently asked questions about IFOps usage, troubleshooting, and best practices.</p>
+						</section>
+				    </header>
+
+				    <section class="docs-section" id="item-9-1">
+						<h2 class="section-heading">General Questions</h2>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>What is the difference between imperative and declarative mode?</h5>
+						<p><strong>Imperative mode</strong> uses direct commands like <code>ifops ec2 create</code> for immediate operations. <strong>Declarative mode</strong> uses <code>infra.yaml</code> files to define desired state, then applies changes with <code>ifops project apply</code>. Declarative mode is better for reproducible infrastructure and version control.</p>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>Can I use IFOps with existing AWS resources?</h5>
+						<p>Yes! Imperative commands work with any AWS resources. For declarative mode, you would need to define matching resources in your <code>infra.yaml</code> - IFOps will detect existing resources during <code>plan</code>.</p>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>Does IFOps support all AWS services?</h5>
+						<p>Currently IFOps supports EC2, S3, ECR, ECS, App Runner, Amplify, ACM (SSL), and CI/CD pipelines. More services will be added in future versions.</p>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>How is IFOps different from Terraform?</h5>
+						<p>IFOps is simpler and focused on common AWS use cases. It combines imperative CLI commands with declarative config. Terraform is more comprehensive but has a steeper learning curve. IFOps is great for quick AWS deployments and smaller projects.</p>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-9-2">
+						<h2 class="section-heading">Troubleshooting</h2>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>I get "credentials not found" error</h5>
+						<p>Run <code>ifops configure --setup</code> to configure your AWS credentials, or ensure your <code>~/.aws/credentials</code> file is properly configured.</p>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>Commands are using wrong region</h5>
+						<p>Specify the region explicitly with <code>--region</code> flag, or set it in your profile configuration. Check current settings with <code>ifops configure --show</code>.</p>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>EC2 modify command fails</h5>
+						<p>The instance must be stopped before modifying attributes like instance type. Use <code>ifops ec2 stop</code> first.</p>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>S3 bucket creation fails with "bucket already exists"</h5>
+						<p>S3 bucket names must be globally unique across all AWS accounts. Try a more specific name like <code>mycompany-myproject-bucket</code>.</p>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>Project apply shows no changes but resources don't exist</h5>
+						<p>Check if the state file is out of sync. You can delete the state at <code>~/.ifops/projects/[name]/state.json</code> and run apply again.</p>
+					</section><!--//section-->
+
+					<section class="docs-section" id="item-9-3">
+						<h2 class="section-heading">Best Practices</h2>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>How should I organize my infrastructure?</h5>
+						<ul>
+						    <li>Use separate profiles for different environments (dev, staging, production)</li>
+						    <li>Use declarative mode for production infrastructure</li>
+						    <li>Version control your <code>infra.yaml</code> files</li>
+						    <li>Use meaningful names for resources</li>
+						</ul>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>What's the recommended workflow?</h5>
+						<ol>
+						    <li>Create a project: <code>ifops project create my-app</code></li>
+						    <li>Define resources in <code>infra.yaml</code></li>
+						    <li>Review changes: <code>ifops project plan my-app</code></li>
+						    <li>Apply changes: <code>ifops project apply my-app</code></li>
+						    <li>Commit <code>infra.yaml</code> to version control</li>
+						</ol>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>How do I handle secrets?</h5>
+						<p>Never commit credentials to version control. Use AWS Secrets Manager or Parameter Store for application secrets. IFOps credentials should stay in <code>~/.ifops/credentials</code> which is not version controlled.</p>
+
+						<h5 class="pt-3"><i class="fas fa-question-circle me-1"></i>Should I use --force flags?</h5>
+						<p>Use <code>--force</code> flags with caution, especially for delete operations. They skip confirmation prompts and can lead to accidental data loss. Only use in automation scripts where you're certain of the operation.</p>
+					</section><!--//section-->
+			    </article><!--//docs-article-->
+
+			    <footer class="footer">
+				    <div class="container text-center py-5">
+			            <small class="copyright">IFOps v0.1.0 - AWS Infrastructure Management CLI · Theme: <a href="https://themes.3rdwavemedia.com/" target="_blank">CoderDocs</a> by Xiaoying Riley</small>
+				        <ul class="social-list list-unstyled pt-4 mb-0">
+						    <li class="list-inline-item"><a href="https://github.com/shoaibkorai/ifops"><i class="fa-brands fa-github fa-fw"></i></a></li>
+				            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-python fa-fw"></i></a></li>
+				            <li class="list-inline-item"><a href="#"><i class="fa-brands fa-aws fa-fw"></i></a></li>
+				        </ul><!--//social-list-->
+				    </div>
+			    </footer>
+		    </div>
+	    </div>
+    </div><!--//docs-wrapper-->
+
+
+    <!-- Javascript -->
+    <script src="assets/plugins/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+
+    <!-- Page Specific JS -->
+    <script src="assets/plugins/smoothscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="assets/js/highlight-custom.js"></script>
+    <script src="assets/plugins/simplelightbox/simple-lightbox.min.js"></script>
+    <script src="assets/plugins/gumshoe/gumshoe.polyfills.min.js"></script>
+    <script src="assets/js/docs.js"></script>
+
+</body>
+</html>
